@@ -1,12 +1,11 @@
 from openai import OpenAI
 from typing import List, Dict
-import os
-from dotenv import load_dotenv
+import streamlit as st
 
 # Load environment variables
 load_dotenv()
 
-client = OpenAI()  # It will automatically use OPENAI_API_KEY from environment
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"]) # It will automatically use OPENAI_API_KEY from environment
 
 def translation_agent(source_text: str) -> str:
     """First agent that creates initial translation following technical rules."""
